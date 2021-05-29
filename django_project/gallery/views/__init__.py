@@ -1,0 +1,1 @@
+from gallery.views.photo import IndexView

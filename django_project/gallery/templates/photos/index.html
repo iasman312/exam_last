@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{#    {% if perms.article.add_article %}#}
+{#        <li><a href="{% url "article:add" %}">Создать статью</a></li>#}
+{#    {% endif %}#}
+{% endblock menu %}
+
+{% block title %}Все фотографии{% endblock title %}
+
+{% block page_header %}Все фотографии{% endblock page_header %}
+
+{% block content %}
+    {% if not photos %}
+        <h2>НЕТ СТАТЕЙ</h2>
+    {% else %}
+        {% for photo in photos %}
+            <div class="card-columns">
+              <div class="card">
+                <img class="card-img-top" src="{{ photo.photo.url }}"alt="product picture">
+                <div class="card-body">
+                  <h5 class="card-title">Подпись: {{ photo.signature }}</h5>
+                  <p class="card-text">Автор: {{ photo.author.username }}</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Дата: {{ photo.created_at }}</small>
+                  <p class="card-text">Альбом: {{ photo.album.name }}</p>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock content %}
