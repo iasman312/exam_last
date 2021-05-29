@@ -24,7 +24,8 @@
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">Дата: {{ photo.created_at }}</small>
-                  <p class="card-text">Альбом: {{ photo.album.name }}</p>
+                  <p class="card-text">Альбом: <a href="{% url "gallery:album-view" photo.album.id %}">{{ photo.album.name }}</a></p>
+                  <a class="btn btn-primary" href="{% url "gallery:photo-view" photo.pk%}" role="button">Подробнее...</a>
                 </div>
               </div>
             </div>
