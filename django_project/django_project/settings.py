@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Custom apps
     'api_v1',
     'gallery',
+    'accounts',
 
     # Lib apps
     'rest_framework',

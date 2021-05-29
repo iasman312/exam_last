@@ -24,6 +24,8 @@ HOMEPAGE_URL = 'gallery/'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('gallery/', include('gallery.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('api_v1/', include('api_v1.urls')),
     path('', RedirectView.as_view(url=HOMEPAGE_URL, permanent=True)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

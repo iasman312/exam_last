@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block menu %}
-    <li><a href="{% url "gallery:album-add" %}">Добавить альбом</a></li>
-    <li><a href="{% url "gallery:album-update" album.id %}">Редактировать альбом</a></li>
-    <li><a href="{% url "gallery:album-delete" album.id %}">Удалить альбом</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url "gallery:album-add" %}">Добавить альбом</a></li>
+    {% endif %}
+    {% if perms.gallery.album_change %}
+        <li><a href="{% url "gallery:album-update" album.id %}">Редактировать альбом</a></li>
+    {% endif %}
+    {% if perms.gallery.album_delete %}
+        <li><a href="{% url "gallery:album-delete" album.id %}">Удалить альбом</a></li>
+    {% endif %}
 {% endblock menu %}
 
 {% block content %}

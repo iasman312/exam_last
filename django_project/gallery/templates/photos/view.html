@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block menu %}
-    <li><a href="{% url "gallery:photo-list" %}">Главная</a></li>
-    <li><a href="{% url "gallery:photo-add" %}">Добавить фотографию</a></li>
-    <li><a href="{% url "gallery:photo-update" photo.id %}">Редактировать фотографию</a></li>
-    <li><a href="{% url "gallery:photo-delete" photo.id %}">Удалить фотографию</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url "gallery:photo-add" %}">Добавить фотографию</a></li>
+    {% endif %}
+    {% if perms.gallery.update_photo %}
+        <li><a href="{% url "gallery:photo-update" photo.id %}">Редактировать фотографию</a></li>
+    {% endif %}
+    {% if perms.gallery.delete_photo %}
+        <li><a href="{% url "gallery:photo-delete" photo.id %}">Удалить фотографию</a></li>
+    {% endif %}
 {% endblock menu %}
 
 {% block content %}
