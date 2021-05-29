@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block menu %}<li><a href="{% url "gallery:album-view" album.id %}">Вернуться к альбому</a></li>{% endblock menu %}
+{% block page_header %}Редактирвоать альбом {{ album.id }}{% endblock page_header %}
+
+{% block content %}
+    <form action="{% url "gallery:album-update" album.id %}" method="post" enctype="multipart/form-data">
+        {% include "partial/form.html" with button_text="Редактировать альбом" %}
+    </form>
+{% endblock content %}

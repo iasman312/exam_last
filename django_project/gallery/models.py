@@ -16,7 +16,7 @@ class Photo(models.Model):
         null=False,
         related_name='photos'
     )
-    album = models.ForeignKey('gallery.Album', on_delete=models.CASCADE, null=True, related_name='photos')
+    album = models.ForeignKey('gallery.Album', on_delete=models.CASCADE, null=True, blank=True, related_name='photos')
     favourites = models.ManyToManyField(get_user_model(), related_name='fav_photos', db_table='photo_users', null=True, blank=True)
     type = models.CharField(max_length=200, choices=CHOICES, verbose_name='тип')
 

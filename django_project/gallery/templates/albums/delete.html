@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Подтвердите удаление фотографии{% endblock %}
+{% block page_header %}Вы уверены, что хотите удалить статью {{ photo.signature }}?{% endblock page_header %}
+
+{% block content%}
+    <form action="{% url "gallery:photo-delete" photo.id %}", method="POST">
+        {% include 'partial/form.html' with button_text="Да, я хочу удалить фотографию" %}
+        <a href="{% url "gallery:photo-view" photo.id %}">Отмена. Код красный. КОД КРАСНЫЙ!!</a>
+    </form>
+{% endblock content %}

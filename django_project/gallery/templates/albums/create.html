@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page_header %}Добавить альбом{% endblock page_header %}
+
+{% block content %}
+    <form action="{% url "gallery:album-add" %}" method="post" enctype="multipart/form-data">
+        {% include "partial/form.html" with button_text="Добавить фотографию" %}
+    </form>
+{% endblock content %}
